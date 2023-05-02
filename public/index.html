@@ -1,0 +1,68 @@
+<!DOCTYPE html><html><head>
+
+        <meta name="subscript-compiler-url" content="https://unpkg.com/@webqit/subscript@2.1.40/dist/compiler.js">
+        <script ssr="" src="https://unpkg.com/@webqit/oohtml/dist/main.js"></script>
+        <script ssr="" src="https://unpkg.com/@webqit/playui-element/dist/main.js"></script><script type="module" src="/bundle.js" by="webflo"></script>
+		<script>
+            globalThis.extVar = 'External variable initial value.';
+            window.Observer = webqit.Observer;
+            class MyElement extends webqit.PlayElement( HTMLElement ) {
+                static get contractFunctions() { return [ 'render' ]; }
+                static get contractFunctionsEnv() { return { localVar }; }
+                // ---------
+                newContent = 'This is property value';
+                // ---------
+                async render() {
+                    this.innerHTML = `${ localVar } | ${ this.newContent } | ${ globalThis.extVar }`;
+                }
+            }
+            const localVar = 'This is local var';
+            customElements.define( 'my-element', MyElement );
+            setTimeout( () => {
+                Observer.set( globalThis, 'extVar', 'External variable update #1!' );
+                setTimeout( () => {
+                    Observer.set( globalThis, 'extVar', 'External variable update #2!' );
+                }, 6000 );
+            }, 5000 );
+        </script>
+        
+        <script scoped="" contract="">
+            document.title = document.bindings.title;
+        </script>
+
+        <template exportid="temp0" src="ffcd">
+            <input exportid="#input">
+            <template exportid="temp1">
+                <textarea exportid="#input" placeholder="This is to be rendered"></textarea>
+                <template exportid="temp2">
+                    <select exportid="#input"></select>
+                </template>
+                <template exportid="temp2b" inherits="#input"></template>
+                <template exportid="temp2c">
+                    <textarea exportid="#input"></textarea>
+                </template>
+            </template>
+        </template>
+		<template exportid="routes" src="/bundle.html" ssr="" by="oohtml-cli"></template>
+
+    </head>
+    <body>
+        <style scoped>
+            :scope {
+                color: red;
+            }
+        </style>
+        <div contextname="routes" style="height: 600px;">
+            <a href="#aa">aa</a>        <a href="#aa/bb">aa/bb</a>
+            <div importscontext="/temp0/temp1">
+                <import module="#input"></import>
+
+                <import module="@routes:#content.html"></import>
+            </div>
+        </div>
+        <p id="aa" namespace >
+            <span id="bb">jjfjfjfjffjfjfjf</span>
+        </p>
+
+        <my-element></my-element>
+</body></html>
