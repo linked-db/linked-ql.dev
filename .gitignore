@@ -1,0 +1,8 @@
+node_modules
+.DS_Store
+.*
+!.webqit
+.webqit/**/*
+!.webqit/**/*.example.json
+!.env.example
+!.gitignore

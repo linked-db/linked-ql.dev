@@ -16,5 +16,7 @@
         ".", "assets"
     ],
     "create_outline_file": "create",
-    "export_id_attr": "exportid"
+    "module_def_attr": "def",
+    "fragment_def_attr": "def"
+
 }

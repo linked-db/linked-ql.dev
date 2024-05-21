@@ -1,68 +1,268 @@
-<!DOCTYPE html><html><head>
+<!DOCTYPE html>
+<html lang="en-US" render="% fullscreen: state?.location.query.fullscreen;">
+    <head>
+        <meta charset="UTF-8">
 
-        <meta name="subscript-compiler-url" content="https://unpkg.com/@webqit/subscript@2.1.40/dist/compiler.js">
-        <script ssr="" src="https://unpkg.com/@webqit/oohtml/dist/main.js"></script>
-        <script ssr="" src="https://unpkg.com/@webqit/playui-element/dist/main.js"></script><script type="module" src="/bundle.js" by="webflo"></script>
-		<script>
-            globalThis.extVar = 'External variable initial value.';
-            window.Observer = webqit.Observer;
-            class MyElement extends webqit.PlayElement( HTMLElement ) {
-                static get contractFunctions() { return [ 'render' ]; }
-                static get contractFunctionsEnv() { return { localVar }; }
-                // ---------
-                newContent = 'This is property value';
-                // ---------
-                async render() {
-                    this.innerHTML = `${ localVar } | ${ this.newContent } | ${ globalThis.extVar }`;
-                }
-            }
-            const localVar = 'This is local var';
-            customElements.define( 'my-element', MyElement );
-            setTimeout( () => {
-                Observer.set( globalThis, 'extVar', 'External variable update #1!' );
-                setTimeout( () => {
-                    Observer.set( globalThis, 'extVar', 'External variable update #2!' );
-                }, 6000 );
-            }, 5000 );
-        </script>
+        <title render="@text:title">Hello App</title>
+        <meta name="description" content="Hello App Description">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, shrink-to-fit=no, interactive-widget=overlays-content, viewport-fit=cover">
+
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="Hello App">
+
+	    <meta name="color-scheme" content="light dark">
+        <meta name="theme-color" content="#D9DAD4">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         
-        <script scoped="" contract="">
-            document.title = document.bindings.title;
-        </script>
+        <link rel="icon" href="/assets/img/logo/logo.png" type="image/png">
+        <link rel="apple-touch-icon" href="/assets/img/logo/logo.png">
 
-        <template exportid="temp0" src="ffcd">
-            <input exportid="#input">
-            <template exportid="temp1">
-                <textarea exportid="#input" placeholder="This is to be rendered"></textarea>
-                <template exportid="temp2">
-                    <select exportid="#input"></select>
-                </template>
-                <template exportid="temp2b" inherits="#input"></template>
-                <template exportid="temp2c">
-                    <textarea exportid="#input"></textarea>
-                </template>
-            </template>
-        </template>
-		<template exportid="routes" src="/bundle.html" ssr="" by="oohtml-cli"></template>
+        <link rel="manifest" href="/manifest.json">
+        <!--
+        <meta crossorigin name="$q-compiler-url" content="http://127.0.0.1:5500/quantum-js/dist/compiler.js">
+	    <script crossorigin ssr src="http://127.0.0.1:5500/oohtml/dist/main.lite.js"></script>
+        -->
+        <meta name="scoped-js" content="script.timing=manual;">
+        <script crossorigin ssr="" src="https://unpkg.com/@webqit/oohtml@latest/dist/main.lite.js"></script>
+        
+        <script type="module" src="/bundle.js" by="webflo"></script>
+		
+	    <template def="routes" src="/bundle.html" ssr="" by="oohtml-cli"></template>
+	
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link defer="" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,500;0,700;1,100;1,300;1,500;1,700&amp;family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&amp;display=swap" rel="stylesheet">
+        <link defer="" type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
-    </head>
-    <body>
-        <style scoped>
-            :scope {
-                color: red;
+        <style>
+            @font-face {
+                font-family: 'Satoshi Medium';
+                src: url('https://assets.website-files.com/64776ea032e2127b2569d7fa/64776fa9470bceaf06474a82_Satoshi-Medium.woff2') format('woff2');
+                font-weight: 500;
+                font-style: normal;
+                font-display: swap;
+            }
+            @font-face {
+                font-family: 'Satoshi Regular';
+                src: url('https://assets.website-files.com/64776ea032e2127b2569d7fa/64776f8b589640c98d06e9f2_Satoshi-Regular.woff2') format('woff2');
+                font-weight: 400;
+                font-style: normal;
+                font-display: swap;
+            }
+            @font-face {
+                font-family: 'Nohemi Light Bf 6438 Cc 5702321';
+                src: url('https://assets.website-files.com/64776ea032e2127b2569d7fa/647770a2b1e2c6a74979f525_Nohemi-Light-BF6438cc5702321.woff') format('woff');
+                font-weight: 300;
+                font-style: normal;
+                font-display: swap;
+            }
+            @font-face {
+                font-family: 'Satoshi Bold';
+                src: url('https://assets.website-files.com/64776ea032e2127b2569d7fa/64a52f1dfe52d431ff4a8ca4_Satoshi-Bold.woff') format('woff');
+                font-weight: 700;
+                font-style: normal;
+                font-display: swap;
+            }
+            :root {
+                --content-width: 1460px;
+            }
+            .d-none { display: none !important; }
+            .d-flex { display: flex; }
+            .d-inflex { display: inline-flex; }
+            .flex-column { flex-direction: column; }
+            .absolute { position: absolute; }
+            .relative { position: relative; }
+            .sticky { position: sticky; top: 0; }
+            .inset-0 { inset: 0; }
+            .transparent { opacity: 0; }
+            .align-center { align-items: center; }
+            .justify-center { justify-content: center; }
+            .justify-separate { justify-content: space-between; }
+            .justify-even { justify-content: space-evenly; }
+            .list-reset { list-style: none; padding-left: unset; margin-block: unset; }
+            .flex-center { align-items: center; justify-content: center; }
+            .flex-wrap { flex-wrap: wrap; }
+            .flex-grow { flex-grow: 1; }
+            .minified { width: 0px; height: 0px; border: none; padding: unset; overflow: hidden; }
+            .w-half { width: 50%; }
+            .oval { border-radius: 50%; }
+            .rounded { border-radius: 0.5em; }
+            .p-1 { padding: 1em; }
+            .p-1r { padding: 1rem; }
+            .p-2 { padding: 2em; }
+            .p-2r { padding: 2rem; }
+            .p-block-0 { padding-block: 0; }
+            .p-inline-0 { padding-inline: 0; }
+            .theme-base {
+                background-color: #eaeaea;
+                color: #333;
+                --dim-color: #797979;
+                --alpha-color: #fff;
+                --line-color: #cdcdcd;
+                --card-background: white;
+                --code-background: wheat;
+            }
+            .theme-black {
+                background-color: black;
+                color: white;
+                --dim-color: #585858;
+                --line-color: #fff3;
+                --code-background: rgb(10,10,10);
+            }
+            .code { background-color: var(--code-background); }
+            .line {
+                position: relative;
+                height: 0;
+                width: 100%;
+                max-width: var(--content-width);
+                margin-inline: auto;
+                display: flex;
+                align-items: center;
+            }
+            .line.vert {
+                width: 0;
+                height: auto;
+                padding: 0;
+                margin: 0;
+                justify-content: center;
+            }
+            .line::after {
+                width: 100%;
+                height: 100%;
+                display: block;
+                content: "";
+                padding: 0.5px;
+                background-color: var(--line-color);
+            }
+            .color-dim { color: var(--dim-color); }
+            .color-alpha { color: var(--alpha-color); }
+            .color-card { background-color: var(--card-background); }
+            .border-top { border-top: 1px solid var(--border-color); }
+            .border-bottom { border-bottom: 1px solid var(--border-color); }
+            .border-left { border-left: 1px solid var(--border-color); }
+            .border-right { border-right: 1px solid var(--border-color); }
+            .border { border: 1px solid var(--border-color); }
+            .device-width { width: 100vh; }
+            .device-width-2 { width: 50vh; }
+            .device-height { height: 100vh; }
+            .device-height-2 { height: 50vh; }
+            .parent-height { height: 100%; }
+            .indented::before {
+                display: inline-block;
+                content: "";
+                width: 3em;
+            }
+            * { box-sizing: border-box; }
+            html {
+                scroll-snap-type: y proximity;
+                scroll-snap-stop: always;
+            }
+            body {
+                margin: unset;
+                font-family: "Satoshi Regular", sans-serif;
+            }
+            a { text-decoration: none; color: inherit; transition: opacity 400ms; }
+            a:hover { opacity: 0.7; }
+            img {
+                max-width: 100%;
+                vertical-align: middle;
+                display: inline-block;
+            }
+            section > .content {
+                position: relative;
+                margin-inline: auto;
+                max-width: var(--content-width);
+            }
+            .bullet-left,
+            .bullet-right {
+                display: flex;
+                align-items: center;
+            }
+            .bullet-left::before,
+            .bullet-right::after {
+                display: inline-block;
+                content: "";
+                margin-right: 0.9rem;
+                width: 0.56rem;
+                height: 0.56rem;
+                border-radius: 50%;
+                background-color: currentColor;
+                transition: transform 400ms;
+            }
+            .bullet-left:has(a:hover)::before {
+                transform: scale(0.75);
+            }
+            .bullet-right::after {
+                margin-left: auto;
+                margin-right: 0.9rem;
+            }
+            .text-1,
+            .text-2 {
+                font-family: "Satoshi Regular", sans-serif;
+                font-size: 1.1rem;
+                letter-spacing: -0.3px;
+                font-weight: 400;
+                line-height: 150%;
+            }
+            .text-3,
+            .text-4 {
+                font-family: "Satoshi Medium", sans-serif;
+                font-size: 3.4375rem;
+                letter-spacing: -1px;
+                font-weight: 500;
+                line-height: 100%;
+                padding-block: 4rem;
+            }
+            .text-3 { font-size: 2.8rem; }
+            .text-max {
+                font-size: min(25vw, 8.56rem);
+                line-height: 1;
+                font-family: "Nohemi Light Bf 6438 Cc 5702321", sans-serif;
+                font-weight: 300;
+                padding-block: 6rem;
+            }
+            .code span {
+                text-underline-offset: 0.1em;
+                text-decoration-style: dashed;
+                text-decoration-line: underline;
+                text-decoration-color: var(--line-color);
+                text-decoration-thickness: 1px;
             }
         </style>
-        <div contextname="routes" style="height: 600px;">
-            <a href="#aa">aa</a>        <a href="#aa/bb">aa/bb</a>
-            <div importscontext="/temp0/temp1">
-                <import module="#input"></import>
 
-                <import module="@routes:#content.html"></import>
-            </div>
-        </div>
-        <p id="aa" namespace >
-            <span id="bb">jjfjfjfjffjfjfjf</span>
-        </p>
+    </head>
+    <body class="theme-base">
 
-        <my-element></my-element>
-</body></html>
+        <header class="d-flex align-center theme-base">
+            <div class="logo p-2r"><a href="">LNKD_QL</a></div>
+            <nav class="flex-grow p-2r">
+                <ul class="list-reset d-flex align-center justify-separate">
+                    <li class="bullet-left"><a href="">Option 1</a></li>
+                    <li class="bullet-left"><a href="">Option 2</a></li>
+                    <li class="bullet-left"><a href="">Option 3</a></li>
+                </ul>
+            </nav>
+            <div class="p-2r"><a href="">Other</a></div>
+        </header>
+
+        <div class="line"></div>
+
+        <import ref="#page.html"></import>
+
+        <div class="line theme-black"></div>
+
+        <footer class="d-flex align-center theme-black">
+            <div class="logo p-2r"><a href="">LNKD_QL</a></div>
+            <nav class="flex-grow p-2r">
+                <ul class="list-reset d-flex align-center justify-separate">
+                    <li class="bullet-left"><a href="">Option 1</a></li>
+                    <li class="bullet-left"><a href="">Option 2</a></li>
+                    <li class="bullet-left"><a href="">Option 3</a></li>
+                </ul>
+            </nav>
+            <div class="p-2r"><a href="">Other</a></div>
+        </footer>
+
+    </body>
+</html>
