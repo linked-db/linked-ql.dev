@@ -1,6 +1,6 @@
 <main>
 
-    <section class="section-1 d-flex" style="height: 90vh;">
+    <section class="section-1 d-flex">
 
         <div class="w-half d-flex flex-center">
 
@@ -15,79 +15,68 @@
         </div>
 
     </section>
-    <section class="section-2 theme-black">
-        <div class="content p-2">
+    <div class="line"></div>
+    <section class="section-2">
+        <div class="content section-hero d-flex flex-column align-center">
 
-            <div class="bullet-left"><b>Problem 1:</b>&nbsp;&nbsp;The namespacing exercise, complexity, and whole syntax noise around relational queries</div>
-            <div class="text-4 indented">
-                SELECT <span>BOOK.ID</span>, <span>BOOK.TITLE</span>, CONTENT, <span>BOOK.CREATED_TIME</span>, <span>USER.ID AS</span> AUTHOR_ID, <span>USER.TITLE AS</span> AUTHOR_TITLE, <span>USER.NAME AS</span> AUTHOR_NAME FROM BOOKS AS BOOK <span>LEFT JOIN USERS AS USER ON USER.ID = BOOK.AUTHOR</span>;
-            </div>
+            <div class="legend text-0">SQL Simplified</div>
+            <h2 class="text-4">Query Relational Data without All the Syntax Noise. <span>Meet the Smart Path Operators.</span></h2>
 
-            <div class="d-flex device-height" style="padding-bottom: 0.4rem;">
-                <div class="w-half">
-                    <div class="sticky p-2r p-inline-0 device-height-2">
-                        <div class="bullet-left"><b>Solution:</b>&nbsp;&nbsp;Syntax sugars + powerful heuristics that do the job</div>
-                    </div>
-                </div>
-                <div class="w-half">
-                    <div class="code parent-height p-2 text-1">
-                        SELECT ID, TITLE, CONTENT, CREATED_TIME, AUTHOR ~&gt; ID, AUTHOR ~&gt; TITLE, AUTHOR ~&gt; NAME FROM BOOKS;
-                    </div>
-                </div>
-            </div>
+            <code class="text-thrill large">
+                SELECT <del><span>BOOK.</span></del>ID, <del><span>BOOK.</span></del>TITLE, CONTENT, <del><span>BOOK.</span></del>CREATED_TIME, <del><span>USER.ID AS </span></del><span class="no-wrap">AUTHOR<ins> → </ins><del>_</del>ID</span>, <del><span>USER.TITLE AS </span></del><span class="no-wrap">AUTHOR<ins> → </ins><del>_</del>TITLE</span>, <del><span>USER.NAME AS </span></del><span class="no-wrap">AUTHOR<ins> → </ins><del>_</del>NAME</span> FROM BOOKS<ins>;</ins><del><span> AS BOOK LEFT JOIN USERS AS USER ON USER.ID = BOOK.AUTHOR;</span></del>
+            </code>
 
-            <div class="d-flex device-height" style="padding-bottom: 0.4rem;">
-                <div class="w-half">
-                    <div class="sticky p-2r p-inline-0 device-height-2">
-                        <div class="bullet-left"><b>Plus:</b>&nbsp;&nbsp;You can drill to any level, and go in any direction, to express any relationship</div>
-                    </div>
-                </div>
-                <div class="w-half">
-                    <div class="code parent-height p-2 text-1">
-                        SELECT * FROM BOOKS WHERE AUTHOR ~&gt; ROLE ~&gt; NAME = 'Contributor' AND BOOK &lt;~ TAGS ~&gt; NAME = 'CSS';
-                    </div>
-                </div>
-            </div>
-
-            <div class="d-flex device-height" style="padding-bottom: 0.4rem;">
-                <div class="w-half">
-                    <div class="sticky p-2r p-inline-0 device-height-2">
-                        <div class="bullet-left"><b>Oh, and:</b>&nbsp;&nbsp;You can choose your query style: SQL, JSON, Query Builder</div>
-                    </div>
-                </div>
-                <div class="w-half">
-                    <div class="code parent-height p-2 text-1">
-                        SQL:<span style="opacity: 0.5;">&nbsp;&nbsp;.query('SELECT ID, TITLE, CONTENT, CREATED_TIME, AUTHOR ~&gt; ID FROM BOOKS');</span><br><br>
-                        JSON:<span style="opacity: 0.5;">&nbsp;&nbsp;.query({ select_list: ['ID', 'TITLE', 'CONTENT', 'CREATED_TIME', { lhs: 'AUTHOR', operator: '~&gt;', rhs: 'ID' }], from_list: ['BOOKS'] });</span><br><br>
-                        API:<span style="opacity: 0.5;">&nbsp;&nbsp;.query( q => q.select('ID', 'TITLE', 'CONTENT', 'CREATED_TIME', q => q.path('AUTHOR', '~&gt;', 'ID')), q.from('BOOKS') );</span><br><br>
-                    </div>
-                </div>
-            </div>
+            <div class="line vert major flex-grow"></div>
 
         </div>
     </section>
-    <div class="line"></div>
-    <section class="section-2">
-        <div class="content p-2">
+    <section class="section-3 theme-black">
+        <div class="content section-hero d-flex flex-column align-center">
 
-            <div class="bullet-left"><b>Problem 2:</b>&nbsp;&nbsp;The long-standing labour and manual coordination around schema versioning and the whole idea of manually versioning a database outside of the database</div>
-            <!--
-                https://www.depesz.com/2008/10/23/is-there-any-good-versioning-package-for-database-schema-andor-data/#comments
+            <div class="legend text-0">Schematics Revisited</div>
+            <h2 class="text-4"><i>ALTER</i> Away with Automatic Versioning. <span>Meet Schema Savepoints and Rollbacks.</span></h2>
 
-                audit trail, changelogs, as code vs as data, persistence, lifecycle, at the application-level, chronological order, source of truth, managing state, messy, get out of sync, tricky, commited changes, drift, colocating database changelogs and the application
-                not just the transforms but also the reverse engineering
-                assymmetry
-                why not make it transactional? artefacts
-                if the premise of Database as Code is to
-                code-level-only access. not easy to visualize
-                schema-ondemand
-                no LinkedQL-specific upfront setup
-                Database engines are state machines by definition and in the best position to manage their own state vs a separate system for mamaging the state of a state machine
-                trying to be your own state machine on a stateless foundation
-            -->
-            <div class="text-max color-alpha">
-                putting only the most-important things in perspective
+            <div class="d-flex flex-column align-center" style="width: 100%;">
+                <code class="text-thrill large _up" style="padding-bottom: 3.5rem;">
+                    <div class="content">
+                        ALTER TABLE <ins>PU</ins>B<del>O</del><ins>LICATI</ins>O<del>K</del><ins>N</ins>S<br>
+                        RENAME <ins>COLUMN AUTHOR </ins>TO PUBLI<ins>S</ins><del>CA</del><ins>H</ins><del>TI</del><ins>E</ins><del>ON</del><ins>R</ins><del>S</del>
+                    </div>
+                </code>
+                <div class="w-full d-flex align-center timeline">
+                    <span class="line flex-grow"></span>
+                    <span class="node line vert"></span>
+                    <span class="line flex-grow"></span>
+                    <span class="node line vert"></span>
+                    <span class="line flex-grow"></span>
+                    <span class="node line vert"></span>
+                    <span class="line flex-grow"></span>
+                    <span class="node line vert"></span>
+                    <span class="line flex-grow"></span>
+                    <span class="node line vert"></span>
+                    <span class="line flex-grow"></span>
+                    <span class="node line vert"></span>
+                    <span class="line flex-grow"></span>
+                </div>
+                <code class="text-thrill large _down" style="padding-top: 3.5rem;">
+                    <div class="content grayed" style="transform: rotate(180deg);">
+                        ALTER TABLE PUBLICATIONS<br>
+                        RENAME <ins>COLUMN PUBLISHER </ins>TO <ins>A</ins><del>B</del><ins>U</ins><del>O</del><ins>TH</ins>O<del>K</del><ins>R</ins><del>S</del>
+                    </div>
+                </code>
             </div>
+
+            <!--
+            <div class="text-2 d-flex grayed" style="gap: 2rem">
+                <div class="w-half" style="text-align: right;">
+                    ALTER TABLE PUBLICATIONS RENAME COLUMN AUTHOR TO PUBLISHER
+                </div>
+                <div class="line vert" style="transform: none;"></div>
+                <div class="w-half" style="text-align: left;">
+                    ALTER TABLE PUBLICATIONS RENAME COLUMN PUBLISHER TO AUTHOR
+                </div>
+            </div>
+            -->
 
         </div>
     </section>

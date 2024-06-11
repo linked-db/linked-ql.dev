@@ -1,268 +1,970 @@
 <!DOCTYPE html>
 <html lang="en-US" render="% fullscreen: state?.location.query.fullscreen;">
-    <head>
-        <meta charset="UTF-8">
 
-        <title render="@text:title">Hello App</title>
-        <meta name="description" content="Hello App Description">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, shrink-to-fit=no, interactive-widget=overlays-content, viewport-fit=cover">
+<head>
+    <meta charset="UTF-8">
 
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-title" content="Hello App">
+    <title render="@text:title">Hello App</title>
+    <meta name="description" content="Hello App Description">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, shrink-to-fit=no, interactive-widget=overlays-content, viewport-fit=cover">
 
-	    <meta name="color-scheme" content="light dark">
-        <meta name="theme-color" content="#D9DAD4">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        
-        <link rel="icon" href="/assets/img/logo/logo.png" type="image/png">
-        <link rel="apple-touch-icon" href="/assets/img/logo/logo.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Hello App">
 
-        <link rel="manifest" href="/manifest.json">
-        <!--
-        <meta crossorigin name="$q-compiler-url" content="http://127.0.0.1:5500/quantum-js/dist/compiler.js">
-	    <script crossorigin ssr src="http://127.0.0.1:5500/oohtml/dist/main.lite.js"></script>
-        -->
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#D9DAD4">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="icon" href="/assets/img/logo/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/img/logo/logo.png">
+
+    <link rel="manifest" href="/manifest.json">
+    <!--
         <meta name="scoped-js" content="script.timing=manual;">
         <script crossorigin ssr="" src="https://unpkg.com/@webqit/oohtml@latest/dist/main.lite.js"></script>
+        -->
+    <meta crossorigin name="$q-compiler-url" content="http://127.0.0.1:5500/quantum-js/dist/compiler.js">
+    <script crossorigin ssr src="http://127.0.0.1:5500/oohtml/dist/main.lite.js"></script>
+    <script type="module" src="/bundle.js" by="webflo"></script>
+    <script type="module">
+        import hljs from 'https://unpkg.com/@highlightjs/cdn-assets@11.9.0/es/highlight.min.js';
+        import js from 'https://unpkg.com/@highlightjs/cdn-assets@11.9.0/es/languages/javascript.min.js';
+        import sql from 'https://unpkg.com/@highlightjs/cdn-assets@11.9.0/es/languages/sql.min.js';
+        hljs.registerLanguage('javascript', js);
+        hljs.registerLanguage('sql', sql);
+        hljs.highlightAll();
+        window.hljs = hljs;
+    </script>
+    <script type="module">
+        //import 'https://cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.8.0/dist/highlightjs-line-numbers.min.js';
+        //hljs.initLineNumbersOnLoad();
+    </script>
+
+    <template def="routes" src="/bundle.html" ssr="" by="oohtml-cli"></template>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link crossorigin rel="preconnect" href="https://fonts.gstatic.com">
+    <link defer
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,500;0,700;1,100;1,300;1,500;1,700&amp;family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&amp;display=swap"
+        rel="stylesheet">
+    <link defer type="text/css" rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <style>
+        @font-face {
+            font-family: 'Satoshi Medium';
+            src: url('https://assets.website-files.com/64776ea032e2127b2569d7fa/64776fa9470bceaf06474a82_Satoshi-Medium.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Satoshi Regular';
+            src: url('https://assets.website-files.com/64776ea032e2127b2569d7fa/64776f8b589640c98d06e9f2_Satoshi-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Nohemi Light Bf 6438 Cc 5702321';
+            src: url('https://assets.website-files.com/64776ea032e2127b2569d7fa/647770a2b1e2c6a74979f525_Nohemi-Light-BF6438cc5702321.woff') format('woff');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Satoshi Bold';
+            src: url('https://assets.website-files.com/64776ea032e2127b2569d7fa/64a52f1dfe52d431ff4a8ca4_Satoshi-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @keyframes untranslate { to { transform: translate(0); } }
+        @keyframes parallax1 { to { transform: translateY(10vh); } }
+        @keyframes text-out { to { color: var(--text-out-color); } }
+        @keyframes text-shrink { to { letter-spacing: -1ch; opacity: 0; } }
+        @keyframes text-expand { to { letter-spacing: unset; opacity: 1; } }
+        @keyframes timeline-shrink { to { width: 0; } }
+        @keyframes timeline-expand { to { width: 16.6667%; } }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --content-width: 1460px;
+        }
+
+        html {
+            scroll-snap-type: y proximity;
+            scroll-snap-stop: always;
+            scroll-timeline: --viewport;
+        }
+
+        body {
+            margin: unset;
+            font-family: "Satoshi Regular", sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: opacity 400ms;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        img {
+            max-width: 100%;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        pre {
+            margin-block: 0;
+        }
+
+        .d-none {
+            display: none !important;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .d-inflex {
+            display: inline-flex;
+        }
+
+        .flex-column {
+            flex-direction: column;
+        }
+
+        .no-wrap {
+            white-space: nowrap;
+        }
+
+        .absolute {
+            position: absolute;
+        }
+
+        .relative {
+            position: relative;
+        }
+
+        .sticky {
+            position: sticky;
+            top: 0;
+        }
+
+        .inset-0 {
+            inset: 0;
+        }
+
+        .transparent {
+            opacity: 0;
+        }
+
+        .align-center {
+            align-items: center;
+        }
+
+        .align-start {
+            align-items: start;
+        }
+
+        .align-end {
+            align-items: end;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .justify-separate {
+            justify-content: space-between;
+        }
+
+        .justify-even {
+            justify-content: space-evenly;
+        }
+
+        .list-reset {
+            list-style: none;
+            padding-left: unset;
+            margin-block: unset;
+        }
+
+        .button-reset {
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            background-color: transparent;
+        }
+
+        .button-reset.active {
+            cursor: default;
+        }
+
+        .flex-center {
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        .flex-grow {
+            flex-grow: 1;
+        }
+
+        .minified {
+            width: 0px;
+            height: 0px;
+            border: none;
+            padding: unset;
+            overflow: hidden;
+        }
+
+        .w-full {
+            width: 100%;
+        }
+
+        .w-half {
+            width: 50%;
+        }
+
+        .oval {
+            border-radius: 50%;
+        }
+
+        .rounded {
+            border-radius: 0.5em;
+        }
+
+        .p-1 {
+            padding: 1em;
+        }
+
+        .p-1r {
+            padding: 1rem;
+        }
+
+        .p-2 {
+            padding: 2em;
+        }
+
+        .p-2r {
+            padding: 2rem;
+        }
+
+        .p-block-0 {
+            padding-block: 0;
+        }
+
+        .p-inline-0 {
+            padding-inline: 0;
+        }
+
+
+
+
+        .hljs-ln-numbers {
+            user-select: none;
+            text-align: center;
+            border-right: 1px solid var(--line-color);
+            vertical-align: top;
+            padding-right: 5px !important;
+            opacity: 0.5;
+        }
+
+        .hljs-ln-code {
+            padding-left: 10px !important;
+        }
+
+        pre code.hljs {
+            display: block;
+            overflow-x: auto;
+            padding: 1em
+        }
+
+        code.hljs {
+            padding: 3px 5px
+        }
+
+        /*
+        Visual Studio-like style based on original C# coloring by Jason Diamond <jason@diamond.name>
+        */
+        .hljs {
+            background: white;
+            color: black
+        }
+
+        .hljs-comment,
+        .hljs-quote,
+        .hljs-variable {
+            color: #008000
+        }
+
+        .hljs-keyword,
+        .hljs-selector-tag,
+        .hljs-built_in,
+        .hljs-name,
+        .hljs-tag {
+            color: #00f
+        }
+
+        .hljs-string,
+        .hljs-title,
+        .hljs-section,
+        .hljs-attribute,
+        .hljs-literal,
+        .hljs-template-tag,
+        .hljs-template-variable,
+        .hljs-type,
+        .hljs-addition {
+            color: #a31515
+        }
+
+        .hljs-deletion,
+        .hljs-selector-attr,
+        .hljs-selector-pseudo,
+        .hljs-meta {
+            color: #2b91af
+        }
+
+        .hljs-doctag {
+            color: #808080
+        }
+
+        .hljs-attr {
+            color: #f00
+        }
+
+        .hljs-symbol,
+        .hljs-bullet,
+        .hljs-link {
+            color: #00b0e8
+        }
+
+        .hljs-emphasis {
+            font-style: italic
+        }
+
+        .hljs-strong {
+            font-weight: bold
+        }
+
+        /*!
+        Theme: StackOverflow Dark
+        Description: Dark theme as used on stackoverflow.com
+        Author: stackoverflow.com
+        Maintainer: @Hirse
+        Website: https://github.com/StackExchange/Stacks
+        License: MIT
+        Updated: 2021-05-15
+
+        Updated for @stackoverflow/stacks v0.64.0
+        Code Blocks: /blob/v0.64.0/lib/css/components/_stacks-code-blocks.less
+        Colors: /blob/v0.64.0/lib/css/exports/_stacks-constants-colors.less
+        */
+
+        .theme-black .hljs {
+            /* var(--highlight-color) */
+            color: #ffffff;
+            /* var(--highlight-bg) */
+            background: #1c1b1b
+        }
+
+        .theme-black .hljs-subst {
+            /* var(--highlight-color) */
+            color: #ffffff
+        }
+
+        .theme-black .hljs-comment {
+            /* var(--highlight-comment) */
+            color: #999999
+        }
+
+        .theme-black .hljs-keyword,
+        .theme-black .hljs-selector-tag,
+        .theme-black .hljs-meta .hljs-keyword,
+        .theme-black .hljs-doctag,
+        .theme-black .hljs-section {
+            /* var(--highlight-keyword) */
+            color: #88aece
+        }
+
+        .theme-black .hljs-attr {
+            /* var(--highlight-attribute); */
+            color: #88aece
+        }
+
+        .theme-black .hljs-attribute {
+            /* var(--highlight-symbol) */
+            color: #c59bc1
+        }
+
+        .theme-black .hljs-name,
+        .theme-black .hljs-type,
+        .theme-black .hljs-number,
+        .theme-black .hljs-selector-id,
+        .theme-black .hljs-quote,
+        .theme-black .hljs-template-tag {
+            /* var(--highlight-namespace) */
+            color: #f08d49
+        }
+
+        .theme-black .hljs-selector-class {
+            /* var(--highlight-keyword) */
+            color: #88aece
+        }
+
+        .theme-black .hljs-string,
+        .theme-black .hljs-regexp,
+        .theme-black .hljs-symbol,
+        .theme-black .hljs-variable,
+        .theme-black .hljs-template-variable,
+        .theme-black .hljs-link,
+        .theme-black .hljs-selector-attr {
+            /* var(--highlight-variable) */
+            color: #b5bd68
+        }
+
+        .theme-black .hljs-meta,
+        .theme-black .hljs-selector-pseudo {
+            /* var(--highlight-keyword) */
+            color: #88aece
+        }
+
+        .theme-black .hljs-built_in,
+        .theme-black .hljs-title,
+        .theme-black .hljs-literal {
+            /* var(--highlight-literal) */
+            color: #f08d49
+        }
+
+        .theme-black .hljs-bullet,
+        .theme-black .hljs-code {
+            /* var(--highlight-punctuation) */
+            color: #cccccc
+        }
+
+        .theme-black .hljs-meta .hljs-string {
+            /* var(--highlight-variable) */
+            color: #b5bd68
+        }
+
+        .theme-black .hljs-deletion {
+            /* var(--highlight-deletion) */
+            color: #de7176
+        }
+
+        .theme-black .hljs-addition {
+            /* var(--highlight-addition) */
+            color: #76c490
+        }
+
+        .theme-black .hljs-emphasis {
+            font-style: italic
+        }
+
+        .theme-black .hljs-strong {
+            font-weight: bold
+        }
+
+        .theme-black .hljs-formula,
+        .theme-black .hljs-operator,
+        .theme-black .hljs-params,
+        .theme-black .hljs-property,
+        .theme-black .hljs-punctuation,
+        .theme-black .hljs-tag {
+            /* purposely ignored */
+
+        }
+
+
+
+
+
+        .icon {
+            height: 1.5em;
+        }
+
+        .theme-base {
+            background-color: #eaeaea;
+            color: #333;
+            color: black;
+            --dim-color: #797979;
+            --alpha-color: #fff;
+            --line-color: #cdcdcd;
+            --card-background: white;
+            --code-background: wheat;
+        }
+
+        .theme-black {
+            background-color: black;
+            color: white;
+            --dim-color: #585858;
+            --line-color: #fff3;
+            --line-color-2: teal;
+            --code-background: rgb(10, 10, 10);
+        }
+
+        .line {
+            position: relative;
+            height: 0;
+            width: 100%;
+            max-width: var(--content-width);
+            margin-inline: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .line.vert {
+            width: 0;
+            height: auto;
+            padding: 0;
+            margin: 0;
+            justify-content: center;
+        }
+
+        .line::after {
+            width: 100%;
+            height: 100%;
+            display: block;
+            content: "";
+            padding: 0.5px;
+            background-color: var(--line-color);
+        }
+
+        .color-dim {
+            color: var(--dim-color);
+        }
+
+        .color-alpha {
+            color: var(--alpha-color);
+        }
+
+        .color-card {
+            background-color: var(--card-background);
+        }
+
+        .border-top {
+            border-top: 1px solid var(--border-color);
+        }
+
+        .border-bottom {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .border-left {
+            border-left: 1px solid var(--border-color);
+        }
+
+        .border-right {
+            border-right: 1px solid var(--border-color);
+        }
+
+        .border {
+            border: 1px solid var(--border-color);
+        }
+
+        .device-width {
+            width: 100vh;
+        }
+
+        .device-width-2 {
+            width: 50vh;
+        }
+
+        .device-height {
+            height: 100vh;
+        }
+
+        .device-height-2 {
+            height: 50vh;
+        }
+
+        .parent-height {
+            height: 100%;
+        }
+
+        .indented::before {
+            display: inline-block;
+            content: "";
+            width: 3em;
+        }
+
+        section>.content {
+            position: relative;
+            margin-inline: auto;
+            max-width: var(--content-width);
+        }
+
+        .bullet-left,
+        .bullet-right {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .bullet-left::before,
+        .bullet-right::after {
+            display: inline-block;
+            content: "";
+            margin-right: 0.9rem;
+            width: 0.56rem;
+            height: 0.56rem;
+            border-radius: 50%;
+            background-color: currentColor;
+            transition: transform 400ms;
+        }
+
+        .bullet-left:has(a:hover)::before {
+            transform: scale(0.75);
+        }
+
+        .bullet-right::after {
+            margin-right: auto;
+            margin-left: 0.9rem;
+        }
+
+        .text-0,
+        .text-1,
+        .text-2 {
+            font-family: "Satoshi Regular", sans-serif;
+            font-size: 1rem;
+            letter-spacing: -0.3px;
+            font-weight: 400;
+            line-height: 150%;
+        }
+
+        .text-0 {
+            font-size: 0.8rem;
+        }
+
+        .text-2 {
+            font-size: 1.2rem;
+        }
+
+        .text-3,
+        .text-4 {
+            font-family: "Satoshi Medium", sans-serif;
+            font-size: 3.4375rem;
+            letter-spacing: -1px;
+            font-weight: 500;
+            line-height: 100%;
+            padding-inline: 4rem;
+            padding-block: 2.5rem;
+        }
+
+        .text-3 {
+            font-size: 2.8rem;
+        }
+
+        .text-max {
+            font-size: min(25vw, 8.56rem);
+            line-height: 1;
+            font-family: "Nohemi Light Bf 6438 Cc 5702321", sans-serif;
+            font-weight: 300;
+            padding-block: 6rem;
+        }
+
+        .section-1 {
+            height: calc(100vh - 4rem - 21.5px);
+        }
+        .section-2 {
+            height: 300vh;
+            --text-thrill-range-start: 100vh;
+            --text-thrill-range-end: 200vh;
+            --text-out-color: silver;
+            --gradient: linear-gradient(45deg, teal, red);
+        }
+        .section-3 {
+            height: 300vh;
+            --text-thrill-range-start: 400vh;
+            --text-thrill-range-end: 500vh;
+            --text-out-color: rgb(15,15,15);
+            --gradient: linear-gradient(45deg, turquoise, hotpink);
+        }
+
+        .section-hero {
+            height: 100vh;
+            padding-top: 2rem;
+            position: sticky !important;
+            top: 0px;
+            text-align: center;
+        }
+
+        .section-hero .legend {
+            padding: 0.2rem;
+            padding-inline: 1rem;
+            border-radius: 20px;
+            transform: translateY(7.5vh);
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            border: 1px solid currentColor;
+        }
+
+        .section-hero h2 {
+            margin: 0; transform: translateY(10vh);
+        }
+
+        .section-hero h2 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-hero .text-thrill.large {
+            width: 75%;
+            padding: 2rem;
+            padding-inline: 4rem;
+            transform: translateY(15vh);
+            font-size: 2rem;
+        }
+
+        .section-hero .timeline {
+            transform: translateY(15vh);
+        }
+
+        .section-hero .line.vert.major {
+            transform: translateY(50vh);
+        }
+
+        .section-hero :is(.legend, h2, .text-thrill.large, .line.vert.major, .timeline) {
+            /* scroll effect */
+            animation-timing-function: ease-out;
+            animation-fill-mode: both;
+            animation-name: untranslate;
+            animation-timeline: --viewport;
+            animation-range: var(--text-thrill-range-start) var(--text-thrill-range-end);
+            animation-duration: 1ms;
+        }
+
+        .text-thrill :is(del span, .grayed) {
+            /* scroll effect */
+            animation-timing-function: linear;
+            animation-fill-mode: both;
+            animation-name: text-out;
+            animation-timeline: --viewport;
+            animation-range: calc(var(--text-thrill-range-start) - 25vh) var(--text-thrill-range-start);
+            animation-duration: 1ms;
+        }
+
+        .text-thrill :is(del, ins) {
+            text-decoration: none;
+            vertical-align: top;
+            /* scroll effect */
+            animation-timing-function: linear;
+            animation-fill-mode: both;
+            animation-name: text-shrink;
+            animation-timeline: --viewport;
+            animation-range: var(--text-thrill-range-start) var(--text-thrill-range-end);
+            animation-duration: 1ms;
+        }
+
+        .text-thrill ins {
+            opacity: 0;
+            letter-spacing: -1ch;
+            /* scroll effect */
+            animation-name: text-expand;
+        }
+
+        .section-hero .timeline .node { height: 30px; }
+        .section-hero .timeline .line.flex-grow:first-of-type,
+        .section-hero .timeline .line.flex-grow:last-of-type {
+            /* scroll effect */
+            animation-timing-function: linear;
+            animation-fill-mode: both;
+            animation-name: timeline-shrink;
+            animation-timeline: --viewport;
+            animation-range: var(--text-thrill-range-start) var(--text-thrill-range-end);
+            animation-duration: 1ms;
+        }
+        .section-hero .timeline .line.flex-grow:last-of-type {
+            width: 0px;
+            flex-shrink: 0;
+            /* scroll effect */
+            animation-name: timeline-expand;
+        }
         
-        <script type="module" src="/bundle.js" by="webflo"></script>
-		
-	    <template def="routes" src="/bundle.html" ssr="" by="oohtml-cli"></template>
-	
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-        <link defer="" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,500;0,700;1,100;1,300;1,500;1,700&amp;family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&amp;display=swap" rel="stylesheet">
-        <link defer="" type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+        .section-hero .text-thrill .content {
+            position: relative;
+        }
+        .section-hero .text-thrill .content::after {
+            position: absolute;
+            content: "SAVEPOINT";
+            display: inline-block;
+            bottom: -2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: x-small;
+            font-weight: bold;
+            padding-block: 2.5px;
+            padding-inline: 5px;
+            border: 1px solid currentColor;
+            color: dimgray;
+            border-radius: 3px;
+        }
+        .section-hero .text-thrill._down .content::after {
+            content: "ROLLBACK";
+            color: dimgray;
+        }
 
-        <style>
-            @font-face {
-                font-family: 'Satoshi Medium';
-                src: url('https://assets.website-files.com/64776ea032e2127b2569d7fa/64776fa9470bceaf06474a82_Satoshi-Medium.woff2') format('woff2');
-                font-weight: 500;
-                font-style: normal;
-                font-display: swap;
-            }
-            @font-face {
-                font-family: 'Satoshi Regular';
-                src: url('https://assets.website-files.com/64776ea032e2127b2569d7fa/64776f8b589640c98d06e9f2_Satoshi-Regular.woff2') format('woff2');
-                font-weight: 400;
-                font-style: normal;
-                font-display: swap;
-            }
-            @font-face {
-                font-family: 'Nohemi Light Bf 6438 Cc 5702321';
-                src: url('https://assets.website-files.com/64776ea032e2127b2569d7fa/647770a2b1e2c6a74979f525_Nohemi-Light-BF6438cc5702321.woff') format('woff');
-                font-weight: 300;
-                font-style: normal;
-                font-display: swap;
-            }
-            @font-face {
-                font-family: 'Satoshi Bold';
-                src: url('https://assets.website-files.com/64776ea032e2127b2569d7fa/64a52f1dfe52d431ff4a8ca4_Satoshi-Bold.woff') format('woff');
-                font-weight: 700;
-                font-style: normal;
-                font-display: swap;
-            }
-            :root {
-                --content-width: 1460px;
-            }
-            .d-none { display: none !important; }
-            .d-flex { display: flex; }
-            .d-inflex { display: inline-flex; }
-            .flex-column { flex-direction: column; }
-            .absolute { position: absolute; }
-            .relative { position: relative; }
-            .sticky { position: sticky; top: 0; }
-            .inset-0 { inset: 0; }
-            .transparent { opacity: 0; }
-            .align-center { align-items: center; }
-            .justify-center { justify-content: center; }
-            .justify-separate { justify-content: space-between; }
-            .justify-even { justify-content: space-evenly; }
-            .list-reset { list-style: none; padding-left: unset; margin-block: unset; }
-            .flex-center { align-items: center; justify-content: center; }
-            .flex-wrap { flex-wrap: wrap; }
-            .flex-grow { flex-grow: 1; }
-            .minified { width: 0px; height: 0px; border: none; padding: unset; overflow: hidden; }
-            .w-half { width: 50%; }
-            .oval { border-radius: 50%; }
-            .rounded { border-radius: 0.5em; }
-            .p-1 { padding: 1em; }
-            .p-1r { padding: 1rem; }
-            .p-2 { padding: 2em; }
-            .p-2r { padding: 2rem; }
-            .p-block-0 { padding-block: 0; }
-            .p-inline-0 { padding-inline: 0; }
-            .theme-base {
-                background-color: #eaeaea;
-                color: #333;
-                --dim-color: #797979;
-                --alpha-color: #fff;
-                --line-color: #cdcdcd;
-                --card-background: white;
-                --code-background: wheat;
-            }
-            .theme-black {
-                background-color: black;
-                color: white;
-                --dim-color: #585858;
-                --line-color: #fff3;
-                --code-background: rgb(10,10,10);
-            }
-            .code { background-color: var(--code-background); }
-            .line {
-                position: relative;
-                height: 0;
-                width: 100%;
-                max-width: var(--content-width);
-                margin-inline: auto;
-                display: flex;
-                align-items: center;
-            }
-            .line.vert {
-                width: 0;
-                height: auto;
-                padding: 0;
-                margin: 0;
-                justify-content: center;
-            }
-            .line::after {
-                width: 100%;
-                height: 100%;
-                display: block;
-                content: "";
-                padding: 0.5px;
-                background-color: var(--line-color);
-            }
-            .color-dim { color: var(--dim-color); }
-            .color-alpha { color: var(--alpha-color); }
-            .color-card { background-color: var(--card-background); }
-            .border-top { border-top: 1px solid var(--border-color); }
-            .border-bottom { border-bottom: 1px solid var(--border-color); }
-            .border-left { border-left: 1px solid var(--border-color); }
-            .border-right { border-right: 1px solid var(--border-color); }
-            .border { border: 1px solid var(--border-color); }
-            .device-width { width: 100vh; }
-            .device-width-2 { width: 50vh; }
-            .device-height { height: 100vh; }
-            .device-height-2 { height: 50vh; }
-            .parent-height { height: 100%; }
-            .indented::before {
-                display: inline-block;
-                content: "";
-                width: 3em;
-            }
-            * { box-sizing: border-box; }
-            html {
-                scroll-snap-type: y proximity;
-                scroll-snap-stop: always;
-            }
-            body {
-                margin: unset;
-                font-family: "Satoshi Regular", sans-serif;
-            }
-            a { text-decoration: none; color: inherit; transition: opacity 400ms; }
-            a:hover { opacity: 0.7; }
-            img {
-                max-width: 100%;
-                vertical-align: middle;
-                display: inline-block;
-            }
-            section > .content {
-                position: relative;
-                margin-inline: auto;
-                max-width: var(--content-width);
-            }
-            .bullet-left,
-            .bullet-right {
-                display: flex;
-                align-items: center;
-            }
-            .bullet-left::before,
-            .bullet-right::after {
-                display: inline-block;
-                content: "";
-                margin-right: 0.9rem;
-                width: 0.56rem;
-                height: 0.56rem;
-                border-radius: 50%;
-                background-color: currentColor;
-                transition: transform 400ms;
-            }
-            .bullet-left:has(a:hover)::before {
-                transform: scale(0.75);
-            }
-            .bullet-right::after {
-                margin-left: auto;
-                margin-right: 0.9rem;
-            }
-            .text-1,
-            .text-2 {
-                font-family: "Satoshi Regular", sans-serif;
-                font-size: 1.1rem;
-                letter-spacing: -0.3px;
-                font-weight: 400;
-                line-height: 150%;
-            }
-            .text-3,
-            .text-4 {
-                font-family: "Satoshi Medium", sans-serif;
-                font-size: 3.4375rem;
-                letter-spacing: -1px;
-                font-weight: 500;
-                line-height: 100%;
-                padding-block: 4rem;
-            }
-            .text-3 { font-size: 2.8rem; }
-            .text-max {
-                font-size: min(25vw, 8.56rem);
-                line-height: 1;
-                font-family: "Nohemi Light Bf 6438 Cc 5702321", sans-serif;
-                font-weight: 300;
-                padding-block: 6rem;
-            }
-            .code span {
-                text-underline-offset: 0.1em;
-                text-decoration-style: dashed;
-                text-decoration-line: underline;
-                text-decoration-color: var(--line-color);
-                text-decoration-thickness: 1px;
-            }
-        </style>
+        .section-2 .feature-section {
+            display: flex;
+            padding-bottom: 2rem;
+        }
 
-    </head>
-    <body class="theme-base">
+        .section-2 .tablist {
+            position: relative;
+            height: 100vh;
+            min-height: 30rem;
+            padding: 1rem;
+            background-color: var(--code-background);
+            background-color: white;
+        }
 
-        <header class="d-flex align-center theme-base">
-            <div class="logo p-2r"><a href="">LNKD_QL</a></div>
-            <nav class="flex-grow p-2r">
-                <ul class="list-reset d-flex align-center justify-separate">
-                    <li class="bullet-left"><a href="">Option 1</a></li>
-                    <li class="bullet-left"><a href="">Option 2</a></li>
-                    <li class="bullet-left"><a href="">Option 3</a></li>
-                </ul>
-            </nav>
-            <div class="p-2r"><a href="">Other</a></div>
-        </header>
+        .section-2 .tablist .tab-head button {
+            position: relative;
+            padding: 1rem;
+            border-bottom: 2px solid transparent;
+        }
 
-        <div class="line"></div>
+        .section-2 .tablist .tab-head button.active {
+            border-color: black;
+        }
 
-        <import ref="#page.html"></import>
+        .section-2 .tablist .tab-content code {
+            background-color: white;
+        }
 
-        <div class="line theme-black"></div>
+        .section-3 .accordion {
+            margin-block: 3rem;
+            counter-reset: counter1;
+        }
 
-        <footer class="d-flex align-center theme-black">
-            <div class="logo p-2r"><a href="">LNKD_QL</a></div>
-            <nav class="flex-grow p-2r">
-                <ul class="list-reset d-flex align-center justify-separate">
-                    <li class="bullet-left"><a href="">Option 1</a></li>
-                    <li class="bullet-left"><a href="">Option 2</a></li>
-                    <li class="bullet-left"><a href="">Option 3</a></li>
-                </ul>
-            </nav>
-            <div class="p-2r"><a href="">Other</a></div>
-        </footer>
+        .section-3 .accordion>li::before {
+            width: 1em;
+            counter-increment: counter1;
+            content: "" counter(counter1) ".";
+        }
 
-    </body>
+        .section-3 .accordion>li::before,
+        .section-3 .accordion .accordion-head {
+            padding: 1.5rem;
+            font-size: 3.4375rem;
+            letter-spacing: -1px;
+            font-weight: 500;
+            line-height: 1em;
+        }
+
+        .section-3 .accordion .accordion-head {
+            width: 100%;
+            text-align: left;
+        }
+
+        .section-3 .accordion .accordion-head div {
+            max-width: 80vw;
+            word-break: break-all;
+        }
+        .section-3 .accordion .accordion-head .icon {
+            margin-top: 0.5rem;
+            padding: 0.8rem;
+            height: 1em;
+            background-color: wheat;
+        }
+
+
+        .section-3 .accordion>li>div {
+            border-left: 1px solid var(--line-color);
+        }
+        .section-3 .accordion>li:has(.accordion-content.active) {
+            background-color: gainsboro;
+        }
+
+
+        .section-3 .accordion>li:has(.accordion-content.active)::before,
+        .section-3 .accordion .accordion-head.active div {
+            color: silver;
+        }
+        .section-3 .accordion .accordion-head.active .icon {
+            transform: rotate(180deg);
+            background-color: gainsboro;
+            color: silver;
+        }
+
+        .section-3 .accordion .accordion-content {
+            height: 0;
+            transition: height 400ms;
+            overflow: hidden;
+        }
+
+        .section-3 .accordion .accordion-content.active {
+            height: 15rem;
+        }
+
+        .section-3 .accordion .accordion-content>.w-half {
+            padding: 1rem;
+        }
+
+        .section-3 .accordion .accordion-content .legend {
+            padding-left: 0.8rem;
+        }
+
+        .section-3 .accordion .accordion-content code {
+            background-color: transparent;
+        }
+    </style>
+
+</head>
+
+<body class="theme-base">
+
+    <header class="d-flex align-center theme-base">
+        <div class="logo p-2r"><a href="/">LNKD_QL</a></div>
+        <nav class="flex-grow p-2r">
+            <ul class="list-reset d-flex align-center justify-separate">
+                <li class="bullet-left"><a href="/about">Option 1</a></li>
+                <li class="bullet-left"><a href="/about">Option 2</a></li>
+                <li class="bullet-left"><a href="/about">Option 3</a></li>
+            </ul>
+        </nav>
+        <div class="p-2r"><a href="">Other</a></div>
+    </header>
+
+    <div class="line"></div>
+
+    <import ref="#page.html"></import>
+
+    <div class="line theme-black"></div>
+
+    <footer class="d-flex align-center theme-black">
+        <div class="logo p-2r"><a href="">LNKD_QL</a></div>
+        <nav class="flex-grow p-2r">
+            <ul class="list-reset d-flex align-center justify-separate">
+                <li class="bullet-left"><a href="">Option 1</a></li>
+                <li class="bullet-left"><a href="">Option 2</a></li>
+                <li class="bullet-left"><a href="">Option 3</a></li>
+            </ul>
+        </nav>
+        <div class="p-2r"><a href="">Other</a></div>
+    </footer>
+
+</body>
+
 </html>
