@@ -485,7 +485,7 @@ FROM BOOKS;</code></pre>
                         <li>
                             <pre><code><span class="comment">// Obtain latest savepoint and roll back to it</span>
 <span class="keyword">let</span> savepoint <span class="operator">=</span> <span class="keyword">await</span> db<span class="punctuation">.</span><span class="function">savepoint()</span><span class="punctuation">;</span>
-<span class="keyword">await</span> savepoint<span class="highlight"><span class="punctuation">.</span><span class="function">rollback()</span></span><span class="punctuation">;</span></code></pre>
+<span class="keyword">await</span> savepoint<span class="punctuation">.</span><span class="highlight"><span class="function">rollback()</span></span><span class="punctuation">;</span></code></pre>
                         </li>
                         <li>
                             <pre><code><span class="comment">// Obtain latest "rolled back" savepoint and roll forward to it</span>
