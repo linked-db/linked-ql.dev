@@ -859,16 +859,16 @@
         :is(.section-2, .section-3) .theme-black {
             --code-background-color: #1d1d1d;
             --code-socket-background-color: black;
-            --code-punctuation-color: #ff70a7;
+            --code-punctuation-color: white;
             --code-function-color: #bb64f9;
-            --code-operator-color: #fe498e;
+            --code-operator-color: white;
             --code-comment-color: dimgray;
             --code-path-color: #009d00;
             --code-cmd-color: #ff0101;
             --code-string-color: #6565ff;
-            --obsolete-code-color: gray;
+            --obsolete-code-color: rgb(47, 37, 115);
             --code-keyword-color: white;
-            --code-color: powderblue;
+            --code-color: turquoise;
             --code-highlight-color: #5d5d5d;
         }
 
@@ -932,14 +932,14 @@
             flex-direction: column;
             align-items: center;
             justify-content: stretch;
-            padding-block: 1rem;
+            padding-block: 0.5rem;
         }
 
         .section-hero {
             position: sticky;
             top: 0px;
             height: 100vh;
-            padding-inline: 0.5rem;
+            padding-inline: 0.25rem;
         }
 
         .section-details {
@@ -970,12 +970,16 @@
             width: 100%;
             height: 100%;
             view-timeline: --code-box-socket;
+            /*
             border-radius: 5px;
+            */
         }
 
         .section-hero .code-box-socket {
             max-width: 800px;
+            /*
             border-radius: 7.5px;
+            */
         }
 
         @media (min-width: 768px) {
@@ -1008,7 +1012,9 @@
         .code-box {
             height: 100%;
             width: 100%;
+            /*
             border-radius: 5px;
+            */
         }
 
         .section-hero .code-box {
@@ -1019,8 +1025,10 @@
             gap: 3rem;
             padding-block: 2.7rem;
             background-color: white;
-            border-radius: 7.5px;
             box-shadow: 0px 10px 10px -10px silver;
+            /*
+            border-radius: 7.5px;
+            */
         }
 
         .section-2 .section-hero .code-box {
@@ -1044,7 +1052,7 @@
                 padding-block: 2.7rem;
                 background-image: url(/assets/img/application.png);
                 background-repeat: no-repeat;
-                background-position: 20px 0px;
+                background-position: 30px 10px;
                 background-color: var(--code-background-color);
             }
         }
@@ -1126,7 +1134,7 @@
         .code-transform {
             width: 100%;
             max-width: 700px;
-            padding-inline: 1rem;
+            padding-inline: 1.5rem;
             font-size: 2.4rem;
             font-weight: 400;
             text-align: center;
@@ -1144,15 +1152,19 @@
                 display: inline;
             }
 
-            .section-3 .section-hero .code-transform {
-                font-size: 1.4rem;
+            .section-hero .code-transform {
+                font-size: 1.6rem;
             }
         }
 
         @media (max-width: 499px) {
+            .section-hero .code-transform {
+                font-size: 1.6rem;
+            }
+
             .section-3 .section-hero .code-transform {
                 font-size: 1.4rem;
-                font-size: 1rem;
+                padding-inline: 0;
             }
         }
 
@@ -1223,6 +1235,10 @@
             background-color: black;
             flex-shrink: 0;
             color: white;
+        }
+
+        .section-2 .section-hero .theme-black .code-highlights li .icon {
+            background-color: transparent;
         }
 
         @media (min-width: 768px) {
@@ -1407,8 +1423,10 @@
             gap: 1rem;
             background-color: white;
             border-color: white;
-            border-radius: 5px;
             box-shadow: 0px 10px 10px -10px silver;
+            /*
+            border-radius: 5px;
+            */
         }
 
         @media (max-width: 767px) {
