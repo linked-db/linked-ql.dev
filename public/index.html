@@ -856,7 +856,7 @@
             --code-highlight-color: #9c9c9c;
         }
 
-        .section-2.theme-black, .section-3.theme-black {
+        :is(.section-2, .section-3) .theme-black {
             --code-background-color: #1d1d1d;
             --code-socket-background-color: black;
             --code-punctuation-color: #ff70a7;
@@ -867,8 +867,8 @@
             --code-cmd-color: #ff0101;
             --code-string-color: #6565ff;
             --obsolete-code-color: gray;
-            --code-keyword-color: #02baba;
-            --code-color: #dadada;
+            --code-keyword-color: white;
+            --code-color: powderblue;
             --code-highlight-color: #5d5d5d;
         }
 
@@ -1040,10 +1040,6 @@
                 animation-duration: 1ms;
             }
 
-            .section-2 .section-hero .code-box {
-                padding-bottom: 2rem;
-            }
-
             .section-details .code-box {
                 padding-block: 2.7rem;
                 background-image: url(/assets/img/application.png);
@@ -1197,6 +1193,7 @@
             width: 100%;
             max-width: 700px;
             padding: 2rem;
+            padding-bottom: 4rem;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
@@ -1251,7 +1248,7 @@
         .section-3 .section-hero .code-transform {
             position: relative;
             white-space: nowrap;
-            --obsolete-code-color: gainsboro;
+            --obsolete-code-color: teal;
         }
 
         .section-3 .section-hero .code-transform::after {
@@ -1304,7 +1301,7 @@
             bottom: 50%;
             transform: translateX(50%) translateY(50%) scale(0);
             background-color: var(--code-background-color);
-            background-color: white;
+            background-color: darkcyan;
             color: var(--code-keyword-color);
             z-index: 1;
             /* scroll effect */
