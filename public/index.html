@@ -27,6 +27,7 @@
     <script crossorigin ssr src="http://127.0.0.1:5500/oohtml/dist/main.lite.js"></script>
     -->
     <script crossorigin ssr="" src="https://unpkg.com/@webqit/oohtml@latest/dist/main.lite.js"></script>
+    <script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"></script>
     <script type="module" src="/bundle.js" by="webflo"></script>
 
     <template def="routes" src="/bundle.html" ssr="" by="oohtml-cli"></template>
@@ -269,18 +270,18 @@
         }
 
         @keyframes fade-in-out {
-            10% {
-                transform: none;
+            15% {
+                transform: scale(1) translateX(var(--translate-x, 0)) translateY(var(--translate-y, 0));
                 opacity: 1;
             }
 
-            90% {
-                transform: none;
+            85% {
+                transform: scale(1) translateX(var(--translate-x, 0)) translateY(var(--translate-y, 0));
                 opacity: 1;
             }
 
             to {
-                transform: scale(0.9);
+                transform: scale(var(--scale, 0.9)) translateX(var(--translate-x, 0)) translateY(var(--translate-y, 0));
                 opacity: 0;
             }
         }
@@ -529,6 +530,7 @@
             color: var(--base-color);;
             background-color: var(--base-background-color);
             --base-background-color: #eaeaea;
+            --base-background-color: white;
             --base-color: black;
             --line-color: #cdcdcd;
         }
@@ -579,6 +581,7 @@
 
         .card-gradient-1,
         .card-gradient-2 {
+            background-image: radial-gradient(100.19% 164.67% at 50% 200%, wheat 31.77%, turquoise 100%);
             background-image: radial-gradient(100.19% 164.67% at 50% 200%, var(--card-gradient-end) 31.77%, var(--card-gradient-start) 100%);
             color: white;
             overflow: hidden;
@@ -838,9 +841,10 @@
             --code-transform-animation-range-code-transform-start: exit-crossing var(--code-transform-start-value);
             --code-transform-animation-range-console-start: exit-crossing calc((var(--code-transform-start-value) + var(--code-transform-stable-value)) * 0.75);
             --code-transform-animation-range-stable: exit-crossing var(--code-transform-stable-value);
+            --code-transform-animation-range-exit: exit-crossing calc(var(--code-transform-stable-value) + 45vh);
             --code-socket-background-color: black;
             --code-socket-background-color: #eaeaea;
-            --code-socket-background-image: none;
+            --code-socket-background-image: radial-gradient(10% 100% at 50% 0%, skyblue 0%, lavender);
             --code-background-color: #eaeaeaf2;
             --code-background-color: gainsboro;
             --code-punctuation-color: #dd0055;
@@ -859,17 +863,17 @@
         :is(.section-2, .section-3) .theme-black {
             --code-background-color: #1d1d1d;
             --code-socket-background-color: black;
-            --code-punctuation-color: rgb(101, 251, 236);
-            --code-function-color: #bb64f9;
-            --code-operator-color: white;
+            --code-punctuation-color: #65fbec;
+            --code-function-color: #978612;
+            --code-operator-color: #ff9a9a;
             --code-comment-color: dimgray;
             --code-path-color: #009d00;
-            --code-cmd-color: #ff0101;
-            --code-string-color: #6565ff;
-            --obsolete-code-color: rgb(47, 37, 115);
-            --code-keyword-color: white;
-            --code-color: rgb(164, 240, 255);
-            --code-highlight-color: #5d5d5d;
+            --code-cmd-color: #ff8787;
+            --code-string-color: #7474ff;
+            --obsolete-code-color: #2f2573;
+            --code-keyword-color: #1cd9ff;
+            --code-color: #348e88;
+            --code-highlight-color: #0d5c8d;
         }
 
         @media (max-width: 767px) {
@@ -977,20 +981,25 @@
 
         .section-hero .code-box-socket {
             max-width: 800px;
-            border-radius: 7.5px;
+            background-image: var(--code-socket-background-image);
+            background-color: var(--code-socket-background-color);
             /*
+            border-radius: 7.5px;
             */
+        }
+
+        @media (max-width: 768px) {
+            .section-hero .code-box-socket {
+                border-radius: 15px;
+            }
         }
 
         @media (min-width: 768px) {
             .section-details .code-box-socket {
                 max-width: 500px;
-                background-image: var(--code-socket-background-image);
-                background-color: var(--code-socket-background-color);
-                background-position: bottom right;
-                background-repeat: no-repeat;
             }
 
+            /*
             .section-details .code-box-socket::before, .section-details .code-box-socket::after {
                 position: absolute;
                 display: block;
@@ -1007,14 +1016,12 @@
             .section-details .code-box-socket::after {
                 top: 100%;
             }
+            */
         }
 
         .code-box {
             height: 100%;
             width: 100%;
-            border-radius: 5px;
-            /*
-            */
         }
 
         .section-hero .code-box {
@@ -1022,13 +1029,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            gap: 3rem;
             padding-block: 2.7rem;
-            background-color: white;
-            box-shadow: 0px 10px 10px -10px silver;
-            border-radius: 7.5px;
-            /*
-            */
+            gap: 3rem;
         }
 
         .section-2 .section-hero .code-box {
@@ -1036,34 +1038,38 @@
         }
 
         @media (min-width: 768px) {
-            .code-box {
-                transform: scale(0.9);
+            .section-details .code-box {
+                padding-block: 2.7rem;
+                background-image: url(/assets/img/application.png);
+                background-position: 30px 10px;
+                background-repeat: no-repeat;
+                border-radius: 5px;
+            }
+
+            .section-hero .code-box .code-transform ._content,
+            .section-details .code-box {
+                --scale: 0.9;
+                transform: scale(var(--scale));
                 opacity: 0;
                 /* scroll effect */
                 animation-timing-function: linear;
                 animation-fill-mode: both;
                 animation-name: fade-in, unscale-1;
-                animation-timeline: view();
+                animation-name: fade-in-out;
+                animation-timeline: --code-box-socket;
                 animation-range: entry-crossing 50% entry-crossing 75%;
+                animation-range: entry-crossing 50% exit-crossing 50%;
                 animation-duration: 1ms;
-            }
-
-            .section-details .code-box {
-                padding-block: 2.7rem;
-                background-image: url(/assets/img/application.png);
-                background-repeat: no-repeat;
-                background-position: 30px 10px;
-                background-color: var(--code-background-color);
             }
         }
 
         @media (max-width: 767px) {
+            .section-details .code-box {
+                background-color: transparent;
+            }
+
             .section-details .code-box li {
                 margin-top: 5rem;
-                background-color: var(--code-socket-background-color);
-                background-image: var(--code-socket-background-image);
-                background-position: bottom right;
-                background-repeat: no-repeat;
             }
 
             .section-details .code-box li pre {
@@ -1211,15 +1217,23 @@
             justify-content: space-evenly;
             gap: 1rem;
             border-top: 1px solid var(--line-color);
-            transform: scale(0.9);
-            opacity: 0;
-            /* scroll effect */
-            animation-timing-function: linear;
-            animation-fill-mode: both;
-            animation-name: unscale-1, fade-in;
-            animation-timeline: --hero-scroller;
-            animation-range: var(--code-transform-animation-range-console-start) var(--code-transform-animation-range-stable);
-            animation-duration: 1ms;
+        }
+
+        @media (min-width: 768px) {
+            .section-2 .section-hero .code-highlights {
+                --scale: 0.9;
+                transform: scale(var(--scale));
+                opacity: 0;
+                /* scroll effect */
+                animation-timing-function: linear;
+                animation-fill-mode: both;
+                animation-name: unscale-1, fade-in;
+                animation-name: fade-in-out;
+                animation-timeline: --hero-scroller;
+                animation-range: var(--code-transform-animation-range-console-start) var(--code-transform-animation-range-stable);
+                animation-range: var(--code-transform-animation-range-console-start) var(--code-transform-animation-range-exit);
+                animation-duration: 1ms;
+            }
         }
 
         .section-2 .section-hero .code-highlights li {
@@ -1264,7 +1278,7 @@
         .section-3 .section-hero .code-transform {
             position: relative;
             white-space: nowrap;
-            --obsolete-code-color: teal;
+            --obsolete-code-color: white;
         }
 
         .section-3 .section-hero .code-transform::after {
@@ -1317,7 +1331,7 @@
             bottom: 50%;
             transform: translateX(50%) translateY(50%) scale(0);
             background-color: var(--code-background-color);
-            background-color: darkcyan;
+            background-color: lavender;
             color: var(--code-keyword-color);
             z-index: 1;
             /* scroll effect */
@@ -1424,6 +1438,7 @@
             background-color: white;
             border-color: white;
             box-shadow: 0px 10px 10px -10px silver;
+            color: cadetblue;
             border-radius: 5px;
             /*
             */
@@ -1452,10 +1467,7 @@
             align-items: center;
             justify-content: start;
             gap: 0.5rem;
-        }
-
-        .feature-card p {
-            background-image: linear-gradient(60deg, #3d527c, #f95656);
+            background-image: linear-gradient(60deg, #3d527c, salmon);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -1477,7 +1489,10 @@
                 width: 200px;
                 height: 200px;
                 opacity: 0;
-                transform: translateY(-50%) scale(0);
+                --translate-y: -50%;
+                --scale: 0.9;
+                transform: translateY(var(--translate-y)) scale(var(--scale));
+                transform-origin: right center;
                 display: flex;
                 flex-direction: column;
                 align-items: stretch;
@@ -1487,8 +1502,10 @@
                 animation-timing-function: linear;
                 animation-fill-mode: both;
                 animation-name: fade-in, unscale-2;
+                animation-name: fade-in-out;
                 animation-timeline: view();
                 animation-range: entry-crossing 50% contain 0%;
+                animation-range: entry-crossing 50% exit-crossing 50%;
                 animation-duration: 1ms;
             }
 
@@ -1497,6 +1514,7 @@
             }
 
             .section-details .features li:nth-child(2) {
+                transform-origin: left center;
                 top: 50%;
                 right: -150px;
             }

@@ -2,11 +2,11 @@
     <section class="section-0 relative d-flex flex-center">
 
         <div class="absolute inset-0 d-flex brand-bg-2">
-            <div class="d-flex flex-center" style="width: 30%;"></div>
+            <div class="d-flex flex-center" style="width: 10%;"></div>
             <div class="line vert"></div>
             <div class="flex-grow"></div>
             <div class="line vert"></div>
-            <div class="d-flex flex-center" style="width: 30%;"></div>
+            <div class="d-flex flex-center" style="width: 10%;"></div>
         </div>
         
         <div class="section-header relative">
@@ -52,11 +52,13 @@
                 <div class="midline"><span></span></div>
                 <div class="section-hero">
                     <div class="code-box-socket brand-bg-2">
-                        <div class="code-box theme-black" style="background-color: slateblue;">
+                        <div class="code-box">
                             <div class="legend text-gradient-1">How It Works</div>
                             <div class="flex-grow d-flex flex-column align-center justify-separate">
                                 <code class="code-transform">
-                                    <span class="punctuation">"</span><span class="keyword">SELECT</span> <del><span class="obsolete">book<span class="punctuation">.</span></span></del>id<span class="punctuation">,</span> <del><span class="obsolete">book<span class="punctuation">.</span></span></del>title<span class="punctuation">,</span> content<span class="punctuation">,</span> <del><span class="obsolete">book<span class="punctuation">.</span></span></del>created_time<span class="punctuation">,</span> <del><span class="obsolete">user<span class="punctuation">.</span>id <span class="keyword">AS</span> </span></del><span class="no-wrap">author<ins> <span class="operator">~&gt;</span> </ins><del>_</del>id</span><span class="punctuation">,</span> <del><span class="obsolete">user<span class="punctuation">.</span>title <span class="keyword">AS</span> </span></del><span class="no-wrap">author<ins> <span class="operator">~&gt;</span> </ins><del>_</del>title</span><span class="punctuation">,</span> <del><span class="obsolete">user<span class="punctuation">.</span>name <span class="keyword">AS</span> </span></del><span class="no-wrap">author<ins> <span class="operator">~&gt;</span> </ins><del>_</del>name</span> <span class="keyword">FROM</span> books<del><span class="obsolete"> <span class="keyword">AS</span> book <span class="keyword">LEFT JOIN</span> users <span class="keyword">AS</span> user <span class="keyword">ON</span> user<span class="punctuation">.</span>id <span class="punctuation">=</span> book<span class="punctuation">.</span>author</span></del><span class="punctuation">"</span>
+                                    <div class="_content">
+                                        <span class="punctuation">"</span><span class="keyword">SELECT</span> <del><span class="obsolete">book<span class="punctuation">.</span></span></del>id<span class="punctuation">,</span> <del><span class="obsolete">book<span class="punctuation">.</span></span></del>title<span class="punctuation">,</span> content<span class="punctuation">,</span> <del><span class="obsolete">book<span class="punctuation">.</span></span></del>created_time<span class="punctuation">,</span> <del><span class="obsolete">user<span class="punctuation">.</span>id <span class="keyword">AS</span> </span></del><span class="no-wrap">author<ins> <span class="operator">~&gt;</span> </ins><del>_</del>id</span><span class="punctuation">,</span> <del><span class="obsolete">user<span class="punctuation">.</span>title <span class="keyword">AS</span> </span></del><span class="no-wrap">author<ins> <span class="operator">~&gt;</span> </ins><del>_</del>title</span><span class="punctuation">,</span> <del><span class="obsolete">user<span class="punctuation">.</span>name <span class="keyword">AS</span> </span></del><span class="no-wrap">author<ins> <span class="operator">~&gt;</span> </ins><del>_</del>name</span> <span class="keyword">FROM</span> books<del><span class="obsolete"> <span class="keyword">AS</span> book <span class="keyword">LEFT JOIN</span> users <span class="keyword">AS</span> user <span class="keyword">ON</span> user<span class="punctuation">.</span>id <span class="punctuation">=</span> book<span class="punctuation">.</span>author</span></del><span class="punctuation">"</span>
+                                    </div>
                                 </code>
                                 <ul class="code-highlights list-reset">
                                     <li>
@@ -69,7 +71,7 @@
                                         <div class="icon">
                                             <img src="https://assets.website-files.com/649039305a62fa17f91e5da6/64ad15892ca618712b33a0f7_Group%203119.svg">
                                         </div>
-                                        <div>Freaking <b class="inline-block text-gradient-1" style="border-bottom: 2px solid black;">70%</b> less code!<br>(= More clarity)</div>
+                                        <div>Whole <b class="inline-block text-gradient-1" style="border-bottom: 2px solid black;">70%</b> less code!<br>(= More clarity)</div>
                                     </li>
                                     <li>
                                         <div class="icon">
@@ -110,7 +112,7 @@
                             <p>Draw incoming references too! Simply flip the operator over.</p>
                         </li>
                     </ul>
-                    <ul class="code-box list-reset">
+                    <ul class="code-box theme-black list-reset">
                         <li>
                             <div class="feature-card">
                                 <h4>
@@ -171,12 +173,14 @@
                 <div class="midline"><span></span></div>
                 <div class="section-hero">
                     <div class="code-box-socket brand-bg-2">
-                        <div class="code-box theme-black" style="background-color: darkcyan;">
+                        <div class="code-box">
                             <div class="legend text-gradient-1">How It Works</div>
                             <div class="w-full d-flex flex-column align-center" style="gap: 3rem;">
                                 <code class="code-transform">
-                                    <span class="punctuation">"</span><span class="keyword">ALTER TABLE</span> <ins>pu</ins>b<del>o</del><ins>licati</ins>o<del>k</del><ins>n</ins>s<br>
-                                    <span class="keyword">RENAME</span> <ins><span class="keyword">COLUMN</span> author<span class="line-break"> </span></ins><span class="keyword">TO</span> <del>publ</del><ins>wr</ins>i<del>ca</del>t<ins>er</ins><del>ions</del><span class="punctuation">"</span>
+                                    <div class="_content">
+                                        <span class="punctuation">"</span><span class="keyword">ALTER TABLE</span> <ins>pu</ins>b<del>o</del><ins>licati</ins>o<del>k</del><ins>n</ins>s<br>
+                                        <span class="keyword">RENAME</span> <ins><span class="keyword">COLUMN</span> author<span class="line-break"> </span></ins><span class="keyword">TO</span> <del>publ</del><ins>wr</ins>i<del>ca</del>t<ins>er</ins><del>ions</del><span class="punctuation">"</span>
+                                    </div>
                                 </code>
                                 <div class="timeline">
                                     <span class="line flex-grow _first">
@@ -203,8 +207,10 @@
                                 </div>
                                 <code class="code-transform _down" style="transform: rotate(180deg);">
                                     <div class="obsolete">
-                                        <span class="punctuation">"</span><span class="keyword">ALTER TABLE</span> publications<br>
-                                        <span class="keyword">RENAME</span> <ins><span class="keyword">COLUMN</span> writer<span class="line-break"> </span></ins><span class="keyword">TO</span> <ins>a</ins><del>b</del><ins>u</ins><del>o</del><ins>th</ins>o<del>k</del><ins>r</ins><del>s</del><span class="punctuation">"</span>
+                                        <div class="_content">
+                                            <span class="punctuation">"</span><span class="keyword">ALTER TABLE</span> publications<br>
+                                            <span class="keyword">RENAME</span> <ins><span class="keyword">COLUMN</span> writer<span class="line-break"> </span></ins><span class="keyword">TO</span> <ins>a</ins><del>b</del><ins>u</ins><del>o</del><ins>th</ins>o<del>k</del><ins>r</ins><del>s</del><span class="punctuation">"</span>
+                                        </div>
                                     </div>
                                     <div class="absolute inset-0 d-flex align-end justify-center" style="transform: rotate(180deg); pointer-events: none;">
                                         <a href="#" onclick="event.preventDefault(); schemaDummySavepointAnchor.scrollIntoView()" class="rollback-button card-gradient-2 link-reset d-flex align-center" style="pointer-events: all;">
@@ -251,7 +257,7 @@
                             <p>Changed your mind on a rollback? You can still <i>roll forward</i>! (Think: Do. Undo. <i>Redo</i>.)</p>
                         </li>
                     </ul>
-                    <ul class="code-box list-reset">
+                    <ul class="code-box theme-black list-reset">
                         <li>
                             <div class="feature-card">
                                 <h4>
