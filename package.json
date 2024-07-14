@@ -8,8 +8,10 @@
         "start": "webflo start"
     },
     "dependencies": {
+        "@linked-db/linked-ql": "^0.3.5",
         "@webqit/util": "^0.7.1",
-        "@webqit/webflo": "file:../../webflo"
+        "@webqit/webflo": "file:../../webflo",
+        "pg": "^8.12.0"
     },
     "devDependencies": {
         "@webqit/oohtml-cli": "^1.0.10",
